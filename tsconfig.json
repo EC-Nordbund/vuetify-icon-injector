@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es2020", "DOM"],
+    "typeRoots": ["./node_modules/@types"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "importHelpers": true,
+    "incremental": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "pretty": true,
+    "baseUrl": "."
+  },
+  "exclude": ["./node_modules"],
+  "files": ["./src/index.ts", "./src/camelToKebabCase.ts"]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "vuetify-icon-injector",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "build:w": "yarn build -w"
+  },
+  "dependencies": {
+    "@mdi/js": "^4.9.95"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
