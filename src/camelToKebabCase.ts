@@ -1,5 +1,5 @@
 /**
- * Just an CamelCase to kebab-case transformer
+ * Just a CamelCase to kebab-case transformer (just a copy from the internet)
  * @param text
  */
 export function camelToKebabCase(text: string) {
