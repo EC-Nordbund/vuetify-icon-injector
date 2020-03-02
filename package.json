@@ -5,12 +5,11 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "build:w": "yarn build -w"
+    "build:w": "yarn build -w",
+    "postinstall": "yarn build"
   },
   "dependencies": {
-    "@mdi/js": "^4.9.95"
-  },
-  "devDependencies": {
+    "@mdi/js": "^4.9.95",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
