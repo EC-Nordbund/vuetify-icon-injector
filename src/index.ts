@@ -9,14 +9,14 @@ const iconMaps: { [tag: string]: Array<string> } = {
 
 const mdiIcons: { [name: string]: string } = {};
 
-for (const key in mdi) {
-  if (mdi.hasOwnProperty(key)) {
+Object.keys(mdi)
+  .sort((a, b) => {
+    return b.length - a.length;
+  })
+  .forEach(key => {
     // @ts-ignore
-    const icon = mdi[key];
-
-    mdiIcons[camelToKebabCase(key)] = icon;
-  }
-}
+    mdiIcons[camelToKebabCase(key)] = mdi[key];
+  });
 
 /**
  * Returns a module to inject into vue loader config at compilerOptions.modules (in Nuxt it is build.loaders.vue.compilerOptions.modules)
@@ -41,7 +41,7 @@ export function getIconInjector(
     }
   }
 
-  function iconParserProps(attrValue: string): string {
+  function iconParserAttributes(attrValue: string): string {
     Object.keys(mdiIcons).forEach(icon => {
       attrValue = attrValue.split(icon).join(mdiIcons[icon]);
     });
@@ -69,6 +69,7 @@ export function getIconInjector(
       }
     },
 
+    // Props handler
     preTransformNode(el: ASTElement) {
       if (iconMaps[el.tag]) {
         let changes = false;
@@ -76,11 +77,13 @@ export function getIconInjector(
         iconAttrs.forEach(attr => {
           // Handle for example <v-text-field append-icon="mdi-*"/>
           if (el.attrsMap[attr]) {
-            const svg = iconParser(el.attrsMap[attr]);
-            el.attrsMap[attr] = svg;
+            const value = el.attrsMap[attr];
+            const newValue = iconParserAttributes(value);
+
+            el.attrsMap[attr] = newValue;
             el.attrsList.forEach(at => {
               if (at.name === attr) {
-                at.value = svg;
+                at.value = newValue;
               }
             });
             changes = true;
@@ -89,11 +92,11 @@ export function getIconInjector(
           // Handle for example <v-text-field :append-icon="'mdi-*'"/>
           if (el.attrsMap[":" + attr]) {
             const value = el.attrsMap[":" + attr];
-            const newValue = iconParserProps(value);
+            const newValue = iconParserAttributes(value);
 
             el.attrsMap[":" + attr] = newValue;
             el.attrsList.forEach(at => {
-              if (at.name === attr) {
+              if (at.name === ":" + attr) {
                 at.value = newValue;
               }
             });
@@ -104,11 +107,11 @@ export function getIconInjector(
           // Handle for example <v-text-field v-bind:append-icon="'mdi-*'"/>
           if (el.attrsMap["v-bind:" + attr]) {
             const value = el.attrsMap["v-bind:" + attr];
-            const newValue = iconParserProps(value);
+            const newValue = iconParserAttributes(value);
 
             el.attrsMap["v-bind:" + attr] = newValue;
             el.attrsList.forEach(at => {
-              if (at.name === attr) {
+              if (at.name === "v-bind:" + attr) {
                 at.value = newValue;
               }
             });
