@@ -7,47 +7,18 @@
 
 
 ```js
+const customIcons = {
+  iconName: 'icon svg path'
+}
+
 const vueLoaderOptions = {
   compilerOptions: {
     modules: [
-      require('vuetify-icon-injector').getIconInjector()
+      require('vuetify-icon-injector').getIconInjector(customIcons) // argument is optional
     ]
   }
 }
 ```
 
-## Options
-`getIconInjector` accepts some arguments:
 
-
-```js
-getIconInjector(
-  customIcons, // {iconName: 'svgPath'}
-  customHandlerFunction, // (attributeValue: string) => null | string
-  useAlwaysCustomHandlerFunction // boolean
-)
-```
-
-Something like:
-
-```html
-<v-icon>mdi-*</v-icon>
-```
-
-and
-
-```html
-<v-text-field append-icon="mdi-*"/>
-```
-
-is easy to handle. But 
-
-```html
-<v-text-field :append-icon="condition?'mdi-*':'mdi-*'"/>
-<v-text-field v-bind:append-icon="condition?'mdi-*':'mdi-*'"/>
-```
-
-is not. The above cases the module currently can handle. But if you have nested conditions it breaks (In this cases the attribute is untouched).
-
-## Contibute
 

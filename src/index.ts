@@ -2,7 +2,7 @@ import { ASTElement } from "vue-template-compiler";
 import * as mdi from "@mdi/js";
 import { camelToKebabCase } from "./camelToKebabCase";
 
-// TODO: extend list
+// TODO: extend list with props for icons
 const iconMaps: { [tag: string]: Array<string> } = {
   "v-text-field": ["append-icon", "append-outer-icon"]
 };
@@ -18,66 +18,14 @@ for (const key in mdi) {
   }
 }
 
-const conditionRegex = /.*?.*:.*/;
-const stringTyp1 = /'.*'/;
-const stringTyp2 = /".*"/;
-const stringTyp3 = /`.*`/;
-const allowedChars = /[a-zA-Z0-9\-'"`?:]/;
-const otherValues = /(null|undefined){1}/;
-
 /**
  * Returns a module to inject into vue loader config at compilerOptions.modules (in Nuxt it is build.loaders.vue.compilerOptions.modules)
  *
  * @param customIcons Object with custom icon definition
- * @param customAttrHandler Handler for bindings that are not just condition ? then : else whre then and else are strings ('mdi-*') or null or undefined
- * @param onlyCustomHanlder Use Handler always not just when normal handler not works
  */
 export function getIconInjector(
-  customIcons: { [name: string]: string } = {},
-  customAttrHandler: (attr: string) => null | string = () => null,
-  onlyCustomHanlder: boolean = false
+  customIcons: { [name: string]: string } = {}
 ): any {
-  function stringParser(attrValue: string): string | null {
-    return `'${iconParser(attrValue.substring(1, attrValue.length - 2))}'`;
-  }
-
-  function conditionParser(attrValue: string): string | null {
-    if (
-      attrValue.split("?").length === 1 &&
-      attrValue.split(":").length === 1
-    ) {
-      const [[question], [then, sonst]] = attrValue
-        .split("?")
-        .map(v => v.split(":"));
-
-      return `${question}?${combinedParser(then)}:${combinedParser(sonst)}`;
-    } else {
-      return null;
-    }
-  }
-
-  function combinedParser(attrValue: string): string | null {
-    attrValue = attrValue.trim();
-
-    if (
-      stringTyp1.test(attrValue) ||
-      stringTyp2.test(attrValue) ||
-      stringTyp3.test(attrValue)
-    ) {
-      return stringParser(attrValue);
-    }
-
-    if (conditionRegex.test(attrValue)) {
-      return conditionParser(attrValue);
-    }
-
-    if (otherValues.test(attrValue)) {
-      return attrValue;
-    }
-
-    return null;
-  }
-
   function iconParser(icon?: string | null): string | undefined {
     if (!icon) {
       return;
@@ -93,48 +41,16 @@ export function getIconInjector(
     }
   }
 
-  function handleDynamicIcon(
-    el: ASTElement,
-    attr: string
-  ): ASTElement | undefined {
-    if (el.attrsMap[attr]) {
-      const value = el.attrsMap[":" + attr];
-      const newValue = simpleJSIconParser(value);
+  function iconParserProps(attrValue: string): string {
+    Object.keys(mdiIcons).forEach(icon => {
+      attrValue = attrValue.split(icon).join(mdiIcons[icon]);
+    });
 
-      if (newValue) {
-        console.log("changed", value, newValue);
-        el.attrsMap[attr] = newValue;
-        el.attrsList.forEach(at => {
-          if (at.name === attr) {
-            at.value = newValue;
-          }
-        });
+    Object.keys(customIcons).forEach(icon => {
+      attrValue = attrValue.split(icon).join(customIcons[icon]);
+    });
 
-        return el;
-      }
-    }
-
-    return undefined;
-  }
-
-  function simpleJSIconParser(attrValue: string): string | null {
-    if (onlyCustomHanlder) {
-      return customAttrHandler(attrValue);
-    }
-
-    for (let i = 0; i < attrValue.length; i++) {
-      if (!allowedChars.test(attrValue[i])) {
-        return customAttrHandler(attrValue);
-      }
-    }
-
-    const parsed = combinedParser(attrValue);
-
-    if (parsed === null) {
-      return customAttrHandler(attrValue);
-    } else {
-      return parsed;
-    }
+    return attrValue;
   }
 
   return {
@@ -171,20 +87,33 @@ export function getIconInjector(
           }
 
           // Handle for example <v-text-field :append-icon="'mdi-*'"/>
-          const dynamicVariant1 = handleDynamicIcon(el, ":" + attr);
+          if (el.attrsMap[":" + attr]) {
+            const value = el.attrsMap[":" + attr];
+            const newValue = iconParserProps(value);
 
-          if (dynamicVariant1) {
+            el.attrsMap[":" + attr] = newValue;
+            el.attrsList.forEach(at => {
+              if (at.name === attr) {
+                at.value = newValue;
+              }
+            });
+
             changes = true;
-            el = dynamicVariant1;
           }
 
           // Handle for example <v-text-field v-bind:append-icon="'mdi-*'"/>
-          // TODO: Check if needed.
-          const dynamicVariant2 = handleDynamicIcon(el, "v-bind:" + attr);
+          if (el.attrsMap["v-bind:" + attr]) {
+            const value = el.attrsMap["v-bind:" + attr];
+            const newValue = iconParserProps(value);
 
-          if (dynamicVariant2) {
+            el.attrsMap["v-bind:" + attr] = newValue;
+            el.attrsList.forEach(at => {
+              if (at.name === attr) {
+                at.value = newValue;
+              }
+            });
+
             changes = true;
-            el = dynamicVariant2;
           }
         });
         if (changes) {
