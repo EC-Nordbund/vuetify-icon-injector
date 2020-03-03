@@ -1,5 +1,5 @@
 # vuetify-icon-injector
-> Current status: testing / prototyping NOT recomended to use!!
+> Current status: beta - It should work but it coud also break your build. You can use it but be aware that some usecases require you to import the icons from @mdi/js your own.
 
 ## Useage
 1. Install `yarn add https://github.com/mathe42/vuetify-icon-injector`
@@ -37,3 +37,8 @@ module.exports = {
 }
 
 ```
+
+
+## I want to use a other icon font
+
+I plan to implement that but it is not yet done. Fell free to create a PR. Plan is to add that as an extra extra Option to the getIconInjector function.
