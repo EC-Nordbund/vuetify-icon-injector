@@ -11,11 +11,29 @@ const customIcons = {
   iconName: 'icon svg path'
 }
 
+const customIconMap = {
+  'my-custom-icon': [
+    'icon-prop-1',
+    'icon-prop-2',
+    'icon-prop-3'
+  ]
+}
+
 const vueLoaderOptions = {
   compilerOptions: {
     modules: [
-      require('vuetify-icon-injector').getIconInjector(customIcons) // argument is optional
+      require('vuetify-icon-injector').getIconInjector(customIcons, customIconMap) // arguments are optional
     ]
   }
 }
+
+// For Nuxt:
+module.exports = {
+  build: {
+    loaders: {
+      vue: vueLoaderOptions
+    }
+  }
+}
+
 ```
