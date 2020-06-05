@@ -2,7 +2,7 @@
 > Current status: beta - It should work but it coud also break your build. You can use it but be aware that some usecases require you to import the icons from @mdi/js your own.
 
 ## Useage
-1. Install `yarn add https://github.com/mathe42/vuetify-icon-injector`
+1. Install `yarn add vuetify-icon-injector` or `npm i vuetify-icon-injector`
 2. Add it to your vue loader Options:
 
 

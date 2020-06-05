@@ -1,15 +1,16 @@
 {
   "name": "vuetify-icon-injector",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "build:w": "yarn build -w",
-    "postinstall": "yarn build"
+    "build": "node createMDIFile.js && tsc --project tsconfig.json",
+    "build:w": "node createMDIFile.js && tsc --project tsconfig.json -w",
+    "prepublishOnly": "yarn build"
   },
-  "dependencies": {
+  "devDependencies": {
     "@mdi/js": "^4.9.95",
+    "camel-to-kebab": "^1.1.0",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
