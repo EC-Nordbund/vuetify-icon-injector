@@ -13,10 +13,7 @@ Object.keys(mdi)
     mdiIcons[camelToKebabCase(key)] = mdi[key];
   });
 
-const ts = `export const mdi: { [name: string]: string } = ${JSON.stringify(
-  mdiIcons,
-  null,
-  2
-)}`;
+const ts = `import { Icons } from '.';
+export const mdi: Icons = ${JSON.stringify(mdiIcons, null, 2)}`;
 
 require("fs").writeFileSync("./src/mdi.ts", ts);

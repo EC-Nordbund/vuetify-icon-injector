@@ -1,5 +1,6 @@
 // Vuetify elements with icon Props
-export const iconMaps: { [component: string]: string[] } = {
+import { IconMap } from ".";
+export const iconMaps: IconMap = {
   "v-alert": ["icon"],
   "v-autocomplete": [
     "append-icon",

@@ -2,7 +2,8 @@ import type { ASTElement } from "vue-template-compiler";
 import { iconMaps } from "./vuetifyIconProps";
 import { mdi } from "./mdi";
 
-type IconMap = { [tag: string]: Array<string> };
+export type IconMap = { [tag: string]: Array<string> };
+export type Icons = {[iconName: string]: string}
 
 export function combineIconMaps(iconMap1: IconMap, iconMap2: IconMap): IconMap {
   const newMap: IconMap = { ...iconMap1 };
@@ -24,7 +25,7 @@ export function combineIconMaps(iconMap1: IconMap, iconMap2: IconMap): IconMap {
  * @param customIcons Object with custom icon definition Object.keys(customIcons) has to be orderd by length decending.
  */
 export function getIconInjector(
-  customIcons: { [name: string]: string } = {},
+  customIcons: Icons = {},
   customIconMaps: IconMap = {}
 ): any {
   let iconMap = combineIconMaps(iconMaps, customIconMaps);
