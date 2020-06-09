@@ -3,3 +3,4 @@ tsconfig
 src
 node_modules
 tsconfig.json
+.github
