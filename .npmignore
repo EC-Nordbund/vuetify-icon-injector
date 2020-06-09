@@ -1,7 +1,12 @@
+.github
+.vscode
+
+CODE_OF_CONDUCT.md
 createMDIFile.js
-tsconfig
+tsconfig.json
+
 src
 node_modules
-tsconfig.json
-.github
-CODE_OF_CONDUCT.md
+
+mdi.d.ts
+vuetifyIconProps.d.ts

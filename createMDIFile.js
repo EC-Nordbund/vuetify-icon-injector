@@ -9,7 +9,6 @@ Object.keys(mdi)
     return b.length - a.length;
   })
   .forEach((key) => {
-    // @ts-ignore
     mdiIcons[camelToKebabCase(key)] = mdi[key];
   });
 

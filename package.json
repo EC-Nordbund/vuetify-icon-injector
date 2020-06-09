@@ -1,6 +1,6 @@
 {
   "name": "vuetify-icon-injector",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
   "devDependencies": {
     "@mdi/js": "^5.3.45",
     "camel-to-kebab": "^1.1.0",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.5",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   }
