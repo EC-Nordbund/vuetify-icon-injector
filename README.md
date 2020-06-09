@@ -3,9 +3,9 @@
 <a href="https://npmjs.com/package/vuetify-icon-injector/">
     <img alt="" src="https://img.shields.io/npm/v/vuetify-icon-injector/latest.svg?style=flat-square">
 </a>
-<a href="https://bundlephobia.com/result?p=vuetify-icon-injector">
+<!-- <a href="https://bundlephobia.com/result?p=vuetify-icon-injector">
     <img alt="" src="https://img.shields.io/bundlephobia/minzip/vuetify-icon-injector?style=flat-square">
-</a>
+</a> -->
 <a href="https://npmjs.com/package/vuetify-icon-injector">
     <img alt="" src="https://img.shields.io/npm/dt/vuetify-icon-injector.svg?style=flat-square">
 </a>
