@@ -4,3 +4,4 @@ src
 node_modules
 tsconfig.json
 .github
+CODE_OF_CONDUCT.md
