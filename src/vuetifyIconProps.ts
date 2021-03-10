@@ -1,7 +1,6 @@
 // Vuetify elements with icon Props
 import { IconMap } from ".";
 export const iconMaps: IconMap = {
-  "v-alert": ["icon"],
   "v-autocomplete": [
     "append-icon",
     "append-outer-icon",
@@ -9,9 +8,7 @@ export const iconMaps: IconMap = {
     "prepend-icon",
     "prepend-inner-icon",
   ],
-  "v-badge": ["icon"],
-  "v-banner": ["icon", "icon-color"],
-  "v-btn": ["icon"],
+  "v-banner": ["icon-color"],
   "v-carousel": ["delimiter-icon", "next-icon", "prev-icon"],
   "v-checkbox": [
     "append-icon",
@@ -84,7 +81,7 @@ export const iconMaps: IconMap = {
     "prepend-icon",
     "prepend-inner-icon",
   ],
-  "v-timeline-item": ["icon", "icon-color"],
+  "v-timeline-item": ["icon-color"],
   "v-treeview": [
     "expand-icon",
     "indeterminate-icon",

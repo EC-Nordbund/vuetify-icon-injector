@@ -1,11 +1,12 @@
 {
-  "name": "vuetify-icon-injector",
-  "version": "1.3.0",
+  "name": "@ec-nordbund/vuetify-icon-injector",
+  "version": "2.1.0",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "node createMDIFile.js && tsc --project tsconfig.json",
-    "build:w": "node createMDIFile.js && tsc --project tsconfig.json -w"
+    "build:w": "node createMDIFile.js && tsc --project tsconfig.json -w",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@mdi/js": "^5.3.45",
