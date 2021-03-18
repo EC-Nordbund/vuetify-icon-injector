@@ -3,7 +3,7 @@ import { iconMaps } from "./vuetifyIconProps";
 import { mdi } from "./mdi";
 
 export type IconMap = { [tag: string]: Array<string> };
-export type Icons = {[iconName: string]: string}
+export type Icons = { [iconName: string]: string };
 
 export function combineIconMaps(iconMap1: IconMap, iconMap2: IconMap): IconMap {
   const newMap: IconMap = { ...iconMap1 };
@@ -51,6 +51,10 @@ export function getIconInjector(
       if (el.tag === "v-icon" && el.children[0].text) {
         // Replace
         el.children[0].text = iconParser(el.children[0].text);
+        // Replace Expression
+        if (el.children[0].type === 2) {
+          el.children[0].expression = iconParser(el.children[0].expression);
+        }
         return el;
       }
     },
