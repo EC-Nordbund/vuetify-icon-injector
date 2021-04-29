@@ -1,4 +1,3 @@
-// @ts-expect-error no type defs for camel-to-kebab
 import camelToKebabCase from "camel-to-kebab";
 import type { ASTElement } from "vue-template-compiler";
 import { iconMaps } from "./vuetifyIconProps";
@@ -49,6 +48,8 @@ export function getIconInjector(
   return {
     // Handle <v-icon>mdi-*</v-icon>
     transformNode(el: ASTElement) {
+      if (!el.children[0]) return;
+   
       // Check for correct Tag
       if (camelToKebabCase(el.tag) === "v-icon" && el.children[0].text) {
         // Replace
