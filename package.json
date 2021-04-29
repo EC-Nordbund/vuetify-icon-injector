@@ -12,7 +12,7 @@
     "@mdi/js": "5.3.45",
     "camel-to-kebab": "1.1.0",
     "typescript": "4.2.4",
-    "vue": "2.6.11",
-    "vue-template-compiler": "2.6.11"
+    "vue": "2.6.12",
+    "vue-template-compiler": "2.6.12"
   }
 }
