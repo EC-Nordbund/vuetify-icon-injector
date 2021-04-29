@@ -28,7 +28,7 @@ This only works for `v-component` and `prop` if it is registerd in the `src/vuet
 
 If a vuetify Prop or Component is missing just create a issue or a PR.
 
-> Since Version 2.3.0 you can use PascalCase and CamelCase in the .vue files and they will be detected.
+> Since Version 2.3.0 you can use PascalCase and CamelCase Component names in your the .vue files and they will be automaticly detected.
 
 ### JS in template
 It just uses String replace to handle this. So you can use something like:
