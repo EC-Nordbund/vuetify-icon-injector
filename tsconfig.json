@@ -21,6 +21,7 @@
     "pretty": true,
     "baseUrl": "."
   },
+  "include": ["./src/*.d.ts"],
   "exclude": ["./node_modules"],
   "files": ["./src/index.ts"]
 }
