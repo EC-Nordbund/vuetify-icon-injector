@@ -1,3 +1,4 @@
+// @ts-expect-error no type defs for camel-to-kebab
 import camelToKebabCase from "camel-to-kebab";
 import type { ASTElement } from "vue-template-compiler";
 import { iconMaps } from "./vuetifyIconProps";

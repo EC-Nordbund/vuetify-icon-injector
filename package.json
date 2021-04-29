@@ -8,9 +8,12 @@
     "build:w": "node createMDIFile.js && tsc --project tsconfig.json -w",
     "prepublishOnly": "yarn build"
   },
+  "dependencies": {
+    "camel-to-kebab": "1.1.0",
+    "tslib": "^2.2.0"
+  },
   "devDependencies": {
     "@mdi/js": "5.9.55",
-    "camel-to-kebab": "1.1.0",
     "typescript": "4.2.4",
     "vue": "2.6.12",
     "vue-template-compiler": "2.6.12"
