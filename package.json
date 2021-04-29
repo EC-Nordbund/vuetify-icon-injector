@@ -9,10 +9,10 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@mdi/js": "^5.3.45",
-    "camel-to-kebab": "^1.1.0",
-    "typescript": "^3.9.5",
-    "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
+    "@mdi/js": "5.3.45",
+    "camel-to-kebab": "1.1.0",
+    "typescript": "3.9.6",
+    "vue": "2.6.11",
+    "vue-template-compiler": "2.6.11"
   }
 }
