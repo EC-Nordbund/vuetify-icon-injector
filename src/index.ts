@@ -1,3 +1,4 @@
+import camelToKebabCase from "camel-to-kebab";
 import type { ASTElement } from "vue-template-compiler";
 import { iconMaps } from "./vuetifyIconProps";
 import { mdi } from "./mdi";
@@ -48,7 +49,7 @@ export function getIconInjector(
     // Handle <v-icon>mdi-*</v-icon>
     transformNode(el: ASTElement) {
       // Check for correct Tag
-      if (el.tag === "v-icon" && el.children[0].text) {
+      if (camelToKebabCase(el.tag) === "v-icon" && el.children[0].text) {
         // Replace
         el.children[0].text = iconParser(el.children[0].text);
         // Replace Expression
@@ -61,6 +62,7 @@ export function getIconInjector(
 
     // Props handler
     preTransformNode(el: ASTElement) {
+      const tag = camelToKebabCase(el.tag);
       let changed = false;
 
       function handleAttribute(attrName: string) {
@@ -83,8 +85,8 @@ export function getIconInjector(
         }
       }
 
-      if (iconMap[el.tag]) {
-        iconMap[el.tag].forEach((attr) => {
+      if (iconMap[tag]) {
+        iconMap[tag].forEach((attr) => {
           // Handle for example <v-text-field append-icon="mdi-*"/>
           handleAttribute(attr);
 
@@ -96,7 +98,7 @@ export function getIconInjector(
         });
       }
 
-      if (el.tag === "v-icon") {
+      if (tag === "v-icon") {
         // Handle for example <v-icon v-text="'mdi-*'"></v-icon>
         handleAttribute("v-text");
         // Handle for example <v-icon v-html="'mdi-*'"></v-icon>
