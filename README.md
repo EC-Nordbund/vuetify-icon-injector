@@ -1,13 +1,13 @@
 # vuetify-icon-injector
 <p align="center">
-<a href="https://npmjs.com/package/vuetify-icon-injector/">
-    <img alt="" src="https://img.shields.io/npm/v/vuetify-icon-injector/latest.svg?style=flat-square">
+<a href="https://npmjs.com/package/@ec-nordbund/vuetify-icon-injector/">
+    <img alt="" src="https://img.shields.io/npm/v/@ec-nordbund/vuetify-icon-injector/latest.svg?style=flat-square">
 </a>
 <!-- <a href="https://bundlephobia.com/result?p=vuetify-icon-injector">
     <img alt="" src="https://img.shields.io/bundlephobia/minzip/vuetify-icon-injector?style=flat-square">
 </a> -->
-<a href="https://npmjs.com/package/vuetify-icon-injector">
-    <img alt="" src="https://img.shields.io/npm/dt/vuetify-icon-injector.svg?style=flat-square">
+<a href="https://npmjs.com/package/@ec-nordbund/vuetify-icon-injector">
+    <img alt="" src="https://img.shields.io/npm/dt/@ec-nordbund/vuetify-icon-injector.svg?style=flat-square">
 </a>
 </p>
 
