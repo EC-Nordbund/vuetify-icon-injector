@@ -9,7 +9,7 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@mdi/js": "5.3.45",
+    "@mdi/js": "5.9.55",
     "camel-to-kebab": "1.1.0",
     "typescript": "4.2.4",
     "vue": "2.6.11",
