@@ -78,4 +78,4 @@ module.exports = {
 ```
 
 ## Vuetify and Nuxt
-I currently working on a PR for the vuetify-module for nuxt. This would do the install for you when enabled.
+You could use my Module https://github.com/EC-Nordbund/vuetify-module it automaticly activates and setup this package.
