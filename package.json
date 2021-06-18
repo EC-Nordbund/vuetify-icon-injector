@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@mdi/js": "5.9.55",
-    "typescript": "4.3.3",
+    "typescript": "4.3.4",
     "vue": "2.6.14",
     "vue-template-compiler": "2.6.14"
   }
