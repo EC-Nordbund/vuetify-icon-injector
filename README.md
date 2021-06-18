@@ -41,7 +41,7 @@ It just uses String replace to handle this. So you can use something like:
 So remeber not to use `mdi-***` strings in your template for any other reason than for the icons.
 
 ## Install
-1. Install `yarn add vuetify-icon-injector` or `npm i vuetify-icon-injector`
+1. Install `yarn add @ec-nordbund/vuetify-icon-injector` or `npm i @ec-nordbund/vuetify-icon-injector`
 2. Add it to your vue loader Options:
 
 
@@ -61,7 +61,7 @@ const customIconMap = {
 const vueLoaderOptions = {
   compilerOptions: {
     modules: [
-      require('vuetify-icon-injector').getIconInjector(customIcons, customIconMap) // arguments are optional
+      require('@ec-nordbund/vuetify-icon-injector').getIconInjector(customIcons, customIconMap) // arguments are optional
     ]
   }
 }
