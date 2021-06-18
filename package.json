@@ -1,8 +1,12 @@
 {
   "name": "@ec-nordbund/vuetify-icon-injector",
-  "version": "2.3.2",
+  "version": "2.3.4",
   "main": "dist/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EC-Nordbund/vuetify-icon-injector.git"
+  },
   "scripts": {
     "build": "node createMDIFile.js && tsc --project tsconfig.json",
     "build:w": "node createMDIFile.js && tsc --project tsconfig.json -w",

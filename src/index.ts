@@ -48,8 +48,9 @@ export function getIconInjector(
   return {
     // Handle <v-icon>mdi-*</v-icon>
     transformNode(el: ASTElement) {
+      // Don't error on <v-icon /> with no child.
       if (!el.children[0]) return;
-   
+
       // Check for correct Tag
       if (camelToKebabCase(el.tag) === "v-icon" && el.children[0].text) {
         // Replace
