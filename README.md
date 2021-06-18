@@ -1,4 +1,4 @@
-# vuetify-icon-injector
+# @ec-nordbund/vuetify-icon-injector
 <p align="center">
 <a href="https://npmjs.com/package/@ec-nordbund/vuetify-icon-injector/">
     <img alt="" src="https://img.shields.io/npm/v/@ec-nordbund/vuetify-icon-injector/latest.svg?style=flat-square">
